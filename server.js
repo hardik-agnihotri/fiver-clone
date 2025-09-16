@@ -8,10 +8,13 @@ import orderRoute from "./routes/order.route.js";
 import messageRoute from "./routes/message.route.js"
 import reviewRoute from "./routes/review.route.js"
 import authRoute from "./routes/auth.routes.js"
+import cookieParser from "cookie-parser";
 
 
 dotenv.config()
 const app = express();
+
+app.use(cookieParser());
 app.use(express.json());
 
 

@@ -11,7 +11,7 @@ try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     req.userId = decoded.id;
-    req.userEmail = decoded.email;
+    req.isSeller = decoded.isSeller;
     next();
   } catch (error) {
     if (error.name === "TokenExpiredError") {
