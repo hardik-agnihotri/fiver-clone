@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import userModel from "../db/models/user.model.js";
 import jwt from "jsonwebtoken";
 
-export const register = async (req, res) => {
+export const register = async (req, res,next) => {
   try {
     const { username, email, password, country } = req.body;
 
@@ -33,8 +33,9 @@ export const register = async (req, res) => {
     });
   } catch (error) {
     console.error("Register error", error);
-    return res.status(500).json({ success: false, message: "Internal Server Error" });
-  }
+    // return res.status(500).json({ success: false, message: "Internal Server Error" });
+    next(error);
+}
 };
 
 export const login = async (req, res) => {
